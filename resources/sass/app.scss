@@ -1,0 +1,88 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Тёмный фон страницы
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+
+//  Тёмная карточка формы
+.card {
+    background-color: #1e1e1e;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+
+//  Поле ввода
+.form-control {
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+    color: #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+
+
+    &:focus {
+        background-color: #333;
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        color: white;
+    }
+}
+
+
+//  Метка (label)
+.form-label {
+    color: #cccccc;
+    font-weight: 500;
+}
+
+
+//  Кнопка
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+
+
+    &:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        transform: translateY(-1px);
+    }
+
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+
+//  Ошибки валидации
+.text-danger {
+    color: #ff6b6b !important;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+
+.alert-danger {
+    background-color: #3a0a0a;
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
+    border-radius: 8px;
+}
