@@ -18,7 +18,7 @@ class TaskFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(4),
-            'status' => $this->faker->randomElement(['Ожидает выполнения', 'В процессе', 'Готово'])
+            'status' => $this->faker->randomElement(['К выполнению', 'В процессе', 'Готово'])
         ];
     }
 }

@@ -17,14 +17,17 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
     color: white;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+
 .text-muted {
     color: #aaaaaa !important;
 }
+
 
 // =============================================================================
 // === ОБЩИЕ КОМПОНЕНТЫ ========================================================
@@ -38,11 +41,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 
+
     &:hover {
         transform: translateY(-2px);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     }
 }
+
 
 .card-header {
     background-color: #1a1a1a !important;
@@ -52,10 +57,12 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
+
 .card-body {
     color: #ffffff;
     padding: 1.25rem;
 }
+
 
 .card-title {
     color: white !important;
@@ -63,6 +70,12 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.1rem;
     letter-spacing: -0.5px;
 }
+
+
+.custom-margin-top {
+    margin-top: 1.6rem !important; // 12px
+}
+
 
 // Кнопки
 .btn-primary {
@@ -73,16 +86,19 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     transition: all 0.2s ease;
 
+
     &:hover {
         background-color: #0056b3;
         border-color: #0056b3;
         transform: translateY(-1px);
     }
 
+
     &:active {
         transform: translateY(0);
     }
 }
+
 
 .btn-success {
     background-color: #2ecc71;
@@ -92,12 +108,28 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     transition: all 0.2s ease;
 
+
     &:hover {
         background-color: #27ae60;
         border-color: #27ae60;
         transform: translateY(-1px);
     }
 }
+
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
 
 // Бэджи статусов
 .badge {
@@ -108,23 +140,27 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: lowercase;
 }
 
-.badge.bg-todo {
+
+.badge.bg-К-выполнению {
     background-color: #ffc107 !important;
     color: #212529 !important;
     font-weight: 600;
 }
 
-.badge.bg-inprogress {
+
+.badge.bg-В-процессе {
     background-color: #007bff !important;
     color: white !important;
     font-weight: 600;
 }
 
-.badge.bg-done {
+
+.badge.bg-Готово {
     background-color: #28a745 !important;
     color: white !important;
     font-weight: 600;
 }
+
 
 // Стили для статистики
 .stat-item {
@@ -132,11 +168,13 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
 
+
     &:last-child {
         border-bottom: none;
         margin-bottom: 0;
     }
 }
+
 
 // Стили для пунктов в карточке статистики
 .card-body p {
@@ -144,11 +182,13 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #333;
 
+
     &:last-child {
         border-bottom: none;
         margin-bottom: 0;
     }
 }
+
 
 // =============================================================================
 // === ФОРМЫ ===================================================================
@@ -158,10 +198,12 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2rem;
 }
 
+
 .form-label {
     color: #cccccc;
     font-weight: 500;
 }
+
 
 .form-control {
     background-color: #2d2d2d;
@@ -170,6 +212,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 8px;
     padding: 0.75rem 1rem;
 
+
     &:focus {
         background-color: #333;
         border-color: #007bff;
@@ -177,6 +220,7 @@ h1, h2, h3, h4, h5, h6 {
         color: white;
     }
 }
+
 
 // =============================================================================
 // === ВАЛИДАЦИЯ ===============================================================
@@ -187,6 +231,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.875rem;
     margin-top: 0.25rem;
 }
+
 
 .alert-danger {
     background-color: #3a0a0a;

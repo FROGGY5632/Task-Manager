@@ -26,7 +26,7 @@
                 @endif
 
                 <div class="mb-3">
-                    <label for="title" class="form-label">Название задачи</label>
+                    <label for="title" class="text-center form-label">Название задачи</label>
                     <input
                         type="text"
                         name="title"
