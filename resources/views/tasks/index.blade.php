@@ -9,7 +9,7 @@
 
     <title>My Fucking Tasks</title>
 </head>
-<body class="bg-dark text-shadow-white">
+<body class="bg-dark text-white">
 
 <div class="container mt-5">
     <div class="text-center mb-4">
