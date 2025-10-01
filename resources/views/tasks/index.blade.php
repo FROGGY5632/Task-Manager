@@ -25,7 +25,7 @@
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">{{ $task->title }}</h5>
                             <div class="d-flex align-items-center gap-2">
-                                <span class="badge bg-{{ strtolower($task->status) }}">
+                                <span class="badge bg-{{ preg_replace('/\s+/', '-', $task->status) }}">
                                     {{ $task->status }}
                                 </span>
                                 <form action="{{ route('tasks.destroy', $task) }}" method="POST" class="d-inline">
