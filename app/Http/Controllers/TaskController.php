@@ -2,34 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use function redirect;
+
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View
     {
-        $tasks = Task::all();
-        return view('tasks.index', compact('tasks'));
+        $tasks = Task::paginate(10);
+        return view('tasks.index', ['tasks' => $tasks]);
     }
 
-    public function create()
+    public function create(): \Illuminate\Contracts\View\View
     {
         return view('tasks.create');
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request): \Illuminate\Http\RedirectResponse
     {
-        /** @var string $title */
+        $data = $request->validated();
         $task = new Task();
-        $task->title = $request->title;
+        $task->title = $data['title'];
         $task->status = 'К выполнению';
         $task->save();
 
-        return redirect('/tasks');
+        return redirect()->route('tasks.index');
     }
 
-    public function destroy(Task $task)
+    public function destroy(Task $task): \Illuminate\Http\RedirectResponse
     {
         $task->delete();
         return redirect()->route('tasks.index')->with('Success', 'Задача удалена!');

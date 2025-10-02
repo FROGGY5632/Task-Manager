@@ -25,6 +25,7 @@
                     </div>
                 @endif
 
+                <!-- Поле ввода задачи -->
                 <div class="mb-3">
                     <label for="title" class="text-center form-label">Название задачи</label>
                     <input

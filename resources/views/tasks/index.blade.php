@@ -20,6 +20,7 @@
             </div>
 
             <div class="task-list">
+                {{ $tasks->links('pagination::bootstrap-5') }}
                 @foreach($tasks as $task)
                     <div class="card mb-3">
                         <div class="card-body d-flex justify-content-between align-items-center">
@@ -63,16 +64,19 @@
                     <div class="stat-item">
                         <span class="text-muted">К выполнению:</span>
                         <span
-                            class="badge bg-К-выполнению float-end">{{ $tasks->where('status', 'К выполнению')->count() }}</span>
+                            class="badge bg-К-выполнению float-end">
+                            {{ $tasks->where('status', 'К выполнению')->count() }}</span>
                     </div>
                     <div class="stat-item">
                         <span class="text-muted">В процессе:</span>
                         <span
-                            class="badge bg-В-процессе float-end">{{ $tasks->where('status', 'В процессе')->count() }}</span>
+                            class="badge bg-В-процессе float-end">
+                            {{ $tasks->where('status', 'В процессе')->count() }}</span>
                     </div>
                     <div class="stat-item">
                         <span class="text-muted">Готово:</span>
-                        <span class="badge bg-Готово float-end">{{ $tasks->where('status', 'Готово')->count() }}</span>
+                        <span class="badge bg-Готово float-end">
+                            {{ $tasks->where('status', 'Готово')->count() }}</span>
                     </div>
                 </div>
             </div>
