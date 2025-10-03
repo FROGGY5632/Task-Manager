@@ -16,7 +16,7 @@
         <div class="col-lg-8">
             <div class="text-center mb-4">
                 <h1 class="display-4 fw-bold mb-2">Список задач</h1>
-                <p class="text-muted mb-0">Мой проект на Laravel • {{ $tasks->count() }} задач</p>
+                <p class="text-muted mb-0">Мой проект на Laravel • {{ $stats['total'] }} задач</p>
             </div>
 
             <div class="task-list">
@@ -59,24 +59,24 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2 align-items-center">
                         <span>Всего задач:</span>
-                        <span class="badge bg-primary">{{ $tasks->count() }}</span>
+                        <span class="badge bg-primary">{{ $stats['total'] }}</span>
                     </div>
                     <div class="stat-item">
                         <span class="text-muted">К выполнению:</span>
                         <span
                             class="badge bg-К-выполнению float-end">
-                            {{ $tasks->where('status', 'К выполнению')->count() }}</span>
+                            {{ $stats['to_do'] }}</span>
                     </div>
                     <div class="stat-item">
                         <span class="text-muted">В процессе:</span>
                         <span
                             class="badge bg-В-процессе float-end">
-                            {{ $tasks->where('status', 'В процессе')->count() }}</span>
+                            {{ $stats['in_progress'] }}</span>
                     </div>
                     <div class="stat-item">
                         <span class="text-muted">Готово:</span>
                         <span class="badge bg-Готово float-end">
-                            {{ $tasks->where('status', 'Готово')->count() }}</span>
+                            {{ $stats['done'] }}</span>
                     </div>
                 </div>
             </div>

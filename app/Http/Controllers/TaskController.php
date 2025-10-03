@@ -5,23 +5,33 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use \Illuminate\Contracts\View\View;
+use \Illuminate\Http\RedirectResponse;
 use function redirect;
 
 
 class TaskController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\View
+    public function index(): View
     {
         $tasks = Task::paginate(10);
-        return view('tasks.index', ['tasks' => $tasks]);
+
+        //Считаем статистику по ВСЕМ задачам
+        $stats = [
+            'total' => Task::count(),
+            'to_do' => Task::where('status', 'К выполнению')->count(),
+            'in_progress' => Task::where('status', 'В процессе')->count(),
+            'done' => Task::where('status', 'Готово')->count(),
+        ];
+        return view('tasks.index', ['tasks' => $tasks, 'stats' => $stats]);
     }
 
-    public function create(): \Illuminate\Contracts\View\View
+    public function create(): View
     {
         return view('tasks.create');
     }
 
-    public function store(StorePostRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(StorePostRequest $request): RedirectResponse
     {
         $data = $request->validated();
         $task = new Task();
@@ -32,7 +42,7 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
-    public function destroy(Task $task): \Illuminate\Http\RedirectResponse
+    public function destroy(Task $task): RedirectResponse
     {
         $task->delete();
         return redirect()->route('tasks.index')->with('Success', 'Задача удалена!');
