@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/sass/app.scss'])
     <title>Task Manager</title>
 </head>
@@ -29,11 +30,12 @@
                                 <span class="badge bg-{{ preg_replace('/\s+/', '-', $task->status) }}">
                                     {{ $task->status }}
                                 </span>
-                                <form action="{{ route('tasks.destroy', $task) }}" method="POST" class="d-inline">
+                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-link text-danger p-0"
-                                            onclick="deleteTask({{ $task->id }})">Удалить
+                                    <button type="submit" class="btn btn-link text-danger p-0"
+                                            onclick="return confirm('Вы уверены?')">
+                                        Удалить
                                     </button>
                                 </form>
                             </div>

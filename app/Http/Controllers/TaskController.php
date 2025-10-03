@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Models\Task;
-use Illuminate\Http\Request;
-use \Illuminate\Contracts\View\View;
-use \Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use function redirect;
 
 
@@ -14,16 +13,22 @@ class TaskController extends Controller
 {
     public function index(): View
     {
-        $tasks = Task::paginate(10);
+        $tasks = Task::orderBy('created_at', 'desc')->paginate(10);
 
         //Считаем статистику по ВСЕМ задачам
-        $stats = [
-            'total' => Task::count(),
-            'to_do' => Task::where('status', 'К выполнению')->count(),
-            'in_progress' => Task::where('status', 'В процессе')->count(),
-            'done' => Task::where('status', 'Готово')->count(),
-        ];
-        return view('tasks.index', ['tasks' => $tasks, 'stats' => $stats]);
+        $stats =
+            [
+                'total' => Task::count(),
+                'to_do' => Task::where('status', 'К выполнению')->count(),
+                'in_progress' => Task::where('status', 'В процессе')->count(),
+                'done' => Task::where('status', 'Готово')->count(),
+            ];
+        $data =
+            [
+                'tasks' => $tasks,
+                'stats' => $stats,
+            ];
+        return view('tasks.index',$data);
     }
 
     public function create(): View
@@ -42,9 +47,9 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
-    public function destroy(Task $task): RedirectResponse
+    public function destroy(int $id): RedirectResponse
     {
-        $task->delete();
+        Task::destroy($id);
         return redirect()->route('tasks.index')->with('Success', 'Задача удалена!');
     }
 }
