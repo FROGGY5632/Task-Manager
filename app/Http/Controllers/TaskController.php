@@ -47,10 +47,10 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
-    public function destroy(int $id): RedirectResponse
+    public function destroy(Task $task): RedirectResponse
     {
-        Task::destroy($id);
-        return redirect()->route('tasks.index')->with('Success', 'Задача удалена!');
+        $task->delete();
+        return redirect()->route('tasks.index')->with('success', 'Задача удалена');
     }
 }
 
