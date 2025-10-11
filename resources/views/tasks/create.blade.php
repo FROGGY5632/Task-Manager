@@ -42,6 +42,37 @@
                     @enderror
                 </div>
 
+                <!-- Блок выбора тегов -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Теги</label>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    @forelse($tags as $tag)
+                        <div class="form-check">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="tags[]"
+                                value="{{ $tag->id }}"
+                                id="tag-{{ $tag->id }}"
+                                @if(old('tags') && in_array($tag->id, old('tags'))) checked @endif
+                            >
+                            <label class="form-check-label badge bg-secondary" for="tag-{{ $tag->id }}">
+                                {{ $tag->name }}
+                            </label>
+                        </div>
+                    @empty
+                        <p class="text-muted">Нет доступных тегов.</p>
+                    @endforelse
+                </div>
+
+                @error('tags')
+                <div class="text-danger mt-1">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
                 <button type="submit" class="btn btn-primary w-100">Добавить</button>
             </form>
         </div>
