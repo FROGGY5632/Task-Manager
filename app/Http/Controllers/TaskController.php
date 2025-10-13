@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Models\Task;
+use App\Models\Tag;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use function redirect;
@@ -13,7 +14,9 @@ class TaskController extends Controller
 {
     public function index(): View
     {
-        $tasks = Task::orderBy('created_at', 'desc')->paginate(10);
+        $tasks = Task::with('tags')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
 
         //Считаем статистику по ВСЕМ задачам
         $stats =
@@ -28,21 +31,27 @@ class TaskController extends Controller
                 'tasks' => $tasks,
                 'stats' => $stats,
             ];
+
         return view('tasks.index',$data);
     }
 
     public function create(): View
     {
-        return view('tasks.create');
+        return view('tasks.create',[
+            'tags' => Tag::all()
+        ]);
     }
 
     public function store(StorePostRequest $request): RedirectResponse
     {
         $data = $request->validated();
+
         $task = new Task();
         $task->title = $data['title'];
         $task->status = 'К выполнению';
         $task->save();
+
+        $task->tags()->sync($data['tags']??[]);
 
         return redirect()->route('tasks.index');
     }

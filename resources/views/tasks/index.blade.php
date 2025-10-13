@@ -38,6 +38,16 @@
                                         Удалить
                                     </button>
                                 </form>
+
+                                {{-- Вывод тегов --}}
+                                @if($task->tags->isNotEmpty())
+                                    <div class="mt-2">
+                                        @foreach($task->tags as $tag)
+                                            <span class="badge bg-secondary">{{ $tag->name }}</span>
+                                        @endforeach
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                     </div>
